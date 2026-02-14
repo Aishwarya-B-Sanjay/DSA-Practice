@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool canThreePartsEqualSum(vector<int>& arr) {
+        int totalsum=0;
+        for(int num:arr)
+        totalsum+=num;
+        if(totalsum %3 !=0)
+            return false;
+        int target = totalsum/3;
+        int sum=0,count=0;
+        for(int num:arr){
+            sum+=num;
+            if(sum==target){
+                count++;
+                sum=0;
+            }
+        }
+        return count>=3;
+    }
+};
