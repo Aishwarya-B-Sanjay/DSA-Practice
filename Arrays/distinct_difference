@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> distinctDifferenceArray(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>diff(n);
+        unordered_set<int> leftset; 
+        unordered_map<int,int> rightmap;
+        for(int num:nums)
+        rightmap[num]++;
+        for(int i=0;i<n;i++){
+            leftset.insert(nums[i]);
+            rightmap[nums[i]]--;
+            if(rightmap[nums[i]]==0)
+            rightmap.erase(nums[i]);
+            diff[i]=leftset.size()-rightmap.size();
+        }
+        return diff;
+    }
+};
